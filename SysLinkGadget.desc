@@ -1,0 +1,26 @@
+; Langage used to code the library: ASM or C
+;
+C
+
+; Number of windows DLL than the library need
+;
+0
+
+; Library type (Can be OBJ or LIB)
+;
+LIB
+
+; Number of PureBasic library needed by the library
+;
+1
+Gadget
+
+; Help directory name
+;
+SysLinkGadget
+
+;
+; Library functions (FunctionName, Arg1, Arg2, ...)
+;
+SysLinkGadget, Long, Word, Word, Word, Word, String, [Long], (#Gadget, x, y, Width, Height, Title$ [, Flags]) - Create a SysLink gadget in the current GadgetList.
+Long | Unicode
