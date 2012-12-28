@@ -10,6 +10,7 @@ PB_OBJ = obj
 # Add all your object list here, which are your C files in the output path
 #
 OBJECTS = $(TARGET)/SysLinkGadget.$(PB_OBJ) \
+          $(TARGET)/RegisterCommonControls.$(PB_OBJ) \
 
 
 # Add all you unicode specific routine here (with the _UNICODE.obj postfix)

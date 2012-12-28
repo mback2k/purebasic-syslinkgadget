@@ -3,9 +3,11 @@
  */
 
 #include "SysLinkGadget.h"
+#include "RegisterCommonControls.h"
 
 static PB_GadgetVT SysLinkVT;
 static int         Initialized;
+static int         Registered;
 
 // -----------------------------------------------------------------------------------------
 
@@ -81,6 +83,14 @@ M_PBFUNCTION(HWND) PB_SysLinkGadget2(integer GadgetID, int x, int y, int Width, 
 
   int Mask = WS_TABSTOP | WS_CHILD | WS_VISIBLE | Flags;
 
+  if (!Registered)
+  {
+    if (RegisterCommonControls())
+    {
+      Registered = 1;
+    }
+  }
+
   if (Result = CreateWindowExW(0, WC_LINK, NULL, Mask, x, y, Width, Height, Globals->CurrentWindow, (HMENU)0, PB_Instance, 0))
   {
     SendMessage(Result, WM_SETTEXT, 0, (LPARAM)Title);
@@ -114,6 +124,7 @@ M_PBFUNCTION(HWND) PB_SysLinkGadget2(integer GadgetID, int x, int y, int Width, 
   return Result;
 }
 
+// -----------------------------------------------------------------------------
 
 M_PBFUNCTION(HWND) PB_SysLinkGadget(integer GadgetID, int x, int y, int Width, int Height, const TCHAR *Title)
 {
