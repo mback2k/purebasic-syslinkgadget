@@ -3,7 +3,7 @@
 # To compile Windows 64 bit, just use another env var for PB_VC8 and point to the 64 bit of cl.exe (and PUREBASIC_HOME to a 64 bit PureBasic)
 #
 LIBRARY = SysLinkGadget
-LIBRARYFILE = $(PUREBASIC_HOME)\PureLibraries\$(LIBRARY)
+LIBRARYFILE = $(TARGET)\$(LIBRARY)
 DEPENDENCIES = SysLinkGadget.h $(TARGET)/dummy $(PB_LIBRARIES)/PureLibrary.h $(PB_LIBRARIES)/FunctionPrototypes.h $(PB_LIBRARIES)/SystemBase/SystemBase.h
 PB_OBJ = obj
 
@@ -24,7 +24,7 @@ $(LIBRARY): $(LIBRARYFILE)
 $(LIBRARYFILE) : $(LIBRARY).desc $(OBJECTS) $(OBJECTS_UNICODE)
 	cp $(LIBRARY).desc  $(TARGET)/$(LIBRARY).desc
 	$(PB_LIBRARIAN) /out:$(TARGET)/$(LIBRARY).lib $(OBJECTS) $(OBJECTS_UNICODE)
-	$(PB_LIBRARYMAKER) $(TARGET)/$(LIBRARY).desc /TO $(PUREBASIC_HOME)/PureLibraries/
+	$(PB_LIBRARYMAKER) $(TARGET)/$(LIBRARY).desc /TO $(TARGET)/
 
 
 # General rules to compile all the files at once
